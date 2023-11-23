@@ -1,3 +1,11 @@
+/*
+ * @Author: liubin
+ * @Date: 2023-11-20 18:00:27
+ * @LastEditTime: 2023-11-23 18:10:22
+ * @LastEditors: liubin
+ * @Description: 
+ * @FilePath: \flutterDemo\hyt_app\lib\widgets\HomeCommonCard.dart
+ */
 import 'package:flutter/material.dart';
 import 'package:hyt_app/common/HexColor.dart';
 
@@ -16,7 +24,7 @@ class HomeCommonCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-          height: 140,
+      height: 140,
       child: FractionallySizedBox(
         widthFactor: 1,
         heightFactor: 1,
@@ -30,35 +38,45 @@ class HomeCommonCard extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                Text(
-                  title,
-                  style: TextStyle(
-                      color: HexColor('#333333'),
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: '苹方-简 中黑体'),
+              Container(
+                padding: const EdgeInsets.only(bottom: 8),
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(width: 1, color: HexColor('#EEEEEE')),
+                  ),
                 ),
-                isShowRightArrow
-                    ? InkWell(
-                        onTap: () {
-                          print('点击全部');
-                        },
-                        child: Row(children: [
-                          Text(
-                            '全部',
-                            style: TextStyle(
-                                color: HexColor('#AAAAAA'), fontSize: 13),
-                          ),
-                          Icon(
-                            Icons.arrow_forward_ios,
-                            size: 12,
-                            color: HexColor('#AAAAAA'),
-                          )
-                        ]),
-                      )
-                    : Container()
-              ]),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        title,
+                        style: TextStyle(
+                            color: HexColor('#333333'),
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: '苹方-简 中黑体'),
+                      ),
+                      isShowRightArrow
+                          ? InkWell(
+                              onTap: () {
+                                print('点击全部');
+                              },
+                              child: Row(children: [
+                                Text(
+                                  '全部',
+                                  style: TextStyle(
+                                      color: HexColor('#AAAAAA'), fontSize: 13),
+                                ),
+                                Icon(
+                                  Icons.arrow_forward_ios,
+                                  size: 12,
+                                  color: HexColor('#AAAAAA'),
+                                )
+                              ]),
+                            )
+                          : Container()
+                    ]),
+              ),
               child
             ],
           ),

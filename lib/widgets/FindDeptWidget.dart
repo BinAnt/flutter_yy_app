@@ -3,18 +3,13 @@
 /*
  * @Author: liubin
  * @Date: 2023-11-21 17:20:50
- * @LastEditTime: 2023-11-23 17:21:49
+ * @LastEditTime: 2023-11-23 18:10:05
  * @LastEditors: liubin
  * @Description: 
  * @FilePath: \flutterDemo\hyt_app\lib\widgets\FindDeptWidget.dart
  */
-import 'dart:developer';
-import 'dart:math';
-
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
-import 'package:hyt_app/common/HexColor.dart';
-import 'package:hyt_app/widgets/IconItem.dart';
 
 class CustomSwiperPaginationBuilder extends SwiperPlugin {
   // 当滚动到此时的颜色
@@ -84,7 +79,7 @@ class CustomSwiperPaginationBuilder extends SwiperPlugin {
         Positioned(
             left: 0,
             right: 0,
-            bottom: -10,
+            bottom: -15,
             child: Row(
               key: key,
               mainAxisSize: MainAxisSize.min,
@@ -120,17 +115,12 @@ class _nameState extends State<FindDeptWidget> {
     return Expanded(
       flex: 1,
       child: Container(
-        padding: const EdgeInsets.only(top: 11),
+        padding: const EdgeInsets.only(top: 6),
         child: Swiper(
           itemBuilder: (BuildContext context, int index) {
-            // return images[index];
-            print(index);
-
             return Wrap(
               alignment: WrapAlignment.spaceBetween,
               children: list.where((item) => item['sort'] ~/ 4 == index).map((item) {
-                print(item);
-                print('index-$index');
                 var i = item['sort'];
                 return SizedBox(
                   width: MediaQuery.of(context).size.width / 5,

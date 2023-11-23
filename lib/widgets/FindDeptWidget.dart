@@ -3,7 +3,7 @@
 /*
  * @Author: liubin
  * @Date: 2023-11-21 17:20:50
- * @LastEditTime: 2023-11-22 21:11:41
+ * @LastEditTime: 2023-11-23 17:21:49
  * @LastEditors: liubin
  * @Description: 
  * @FilePath: \flutterDemo\hyt_app\lib\widgets\FindDeptWidget.dart
@@ -103,31 +103,15 @@ class FindDeptWidget extends StatefulWidget {
   State<FindDeptWidget> createState() => _nameState();
 }
 
-const List<String> titles = [
-  'Flutter Swiper is awesome',
-  'Really nice',
-  'Yeah'
-];
-
-List<Map<String, dynamic>> findDepts = [
+List<Map<String, dynamic>> list = [
   {'title': '神经外科', 'icon': 'images/icon_1.png', 'sort': 0},
   {'title': '神经内科', 'icon': 'images/icon_2.png', 'sort': 1},
   {'title': '消化内科', 'icon': 'images/icon_3.png', 'sort': 2},
   {'title': '神经外科', 'icon': 'images/icon_4.png', 'sort': 3},
-  {'title': '康复医学科', 'icon': 'images/icon_5.png', 'sort': 4},
-  {'title': '康复医学科', 'icon': 'images/icon_6.png', 'sort': 5},
-  {'title': '康复医学科', 'icon': 'images/icon_7.png', 'sort': 6},
-  {'title': '康复医学科', 'icon': 'images/icon_8.png', 'sort': 7},
-];
-
-const List<Widget> images = [
-  IconItem(title: '神经外科', icon: 'images/icon_1.png'),
-  IconItem(title: '神经内科', icon: 'images/icon_2.png'),
-  IconItem(title: '消化内科', icon: 'images/icon_3.png'),
-  IconItem(title: '康复医学科', icon: 'images/icon_4.png'),
-  IconItem(title: '康复医学科', icon: 'images/icon_6.png'),
-  IconItem(title: '康复医学科', icon: 'images/icon_7.png'),
-  IconItem(title: '康复医学科', icon: 'images/icon_8.png'),
+  {'title': '眼科', 'icon': 'images/icon_5.png', 'sort': 4},
+  {'title': '泌尿科', 'icon': 'images/icon_6.png', 'sort': 5},
+  {'title': '耳鼻喉', 'icon': 'images/icon_7.png', 'sort': 6},
+  {'title': '骨科', 'icon': 'images/icon_8.png', 'sort': 7},
 ];
 
 class _nameState extends State<FindDeptWidget> {
@@ -141,26 +125,34 @@ class _nameState extends State<FindDeptWidget> {
           itemBuilder: (BuildContext context, int index) {
             // return images[index];
             print(index);
-            print((findDepts[0]['sort'] / 4).toInt() == index);
-            print((findDepts[1]['sort'] / 4).toInt() == index);
 
-            const List<Widget> list = [];
-            for (var widget in List.generate(
-                5,
-                (index) => Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.blue),
+            return Wrap(
+              alignment: WrapAlignment.spaceBetween,
+              children: list.where((item) => item['sort'] ~/ 4 == index).map((item) {
+                print(item);
+                print('index-$index');
+                var i = item['sort'];
+                return SizedBox(
+                  width: MediaQuery.of(context).size.width / 5,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      SizedBox(
+                          height: MediaQuery.of(context).size.width * 0.12,
+                          width: MediaQuery.of(context).size.width * 0.12,
+                          child: Image.asset(
+                                  'images/icon_${(i+1)}.png',
+                                  width: 30,
+                                  height: 30),
                       ),
-                    ))) {
-              list.add(widget);
-            }
-
-            return const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: list,
+                      Padding(
+                        padding: const EdgeInsets.only(top: 2.0),
+                        child: Text(item['title']),
+                      )
+                    ],
+                  ),
+                );
+              }).toList(),
             );
           },
           itemCount: 2,

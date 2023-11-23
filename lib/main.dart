@@ -1,7 +1,7 @@
 /*
  * @Author: liubin
  * @Date: 2023-11-10 11:27:23
- * @LastEditTime: 2023-11-21 18:09:18
+ * @LastEditTime: 2023-11-23 14:15:40
  * @LastEditors: liubin
  * @Description: 
  * @FilePath: \flutterDemo\hyt_app\lib\main.dart
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: '四川大学华西医院',
+      title: 'xx大学xx医院',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
             seedColor: const Color.fromRGBO(58, 211, 193, 1)),
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('四川大学华西医院'),
+          title: const Text('xx大学xx医院'),
           titleTextStyle: const TextStyle(color: Colors.white, fontSize: 20),
           backgroundColor: const Color.fromRGBO(58, 211, 193, 1), // 顶部导航背景颜色
         ),

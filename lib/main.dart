@@ -1,7 +1,7 @@
 /*
  * @Author: liubin
  * @Date: 2023-11-10 11:27:23
- * @LastEditTime: 2023-11-23 14:15:40
+ * @LastEditTime: 2023-11-24 16:17:14
  * @LastEditors: liubin
  * @Description: 
  * @FilePath: \flutterDemo\hyt_app\lib\main.dart
@@ -13,6 +13,7 @@ import 'package:hyt_app/widgets/FindDeptWidget.dart';
 import 'package:hyt_app/widgets/HomeCommonCard.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:hyt_app/widgets/IconItem.dart';
+import 'package:hyt_app/widgets/OutpatientService.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,7 +38,10 @@ class MyApp extends StatelessWidget {
           titleTextStyle: const TextStyle(color: Colors.white, fontSize: 20),
           backgroundColor: const Color.fromRGBO(58, 211, 193, 1), // 顶部导航背景颜色
         ),
-        body: const HomePage(),
+        body: const SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: HomePage(),
+        ),
         // scaffold包括AppBar和Body的背景颜色
         backgroundColor: const Color.fromRGBO(245, 246, 247, 1),
       ),
@@ -54,10 +58,7 @@ class HomePage extends StatelessWidget {
     return Center(
         child: Container(
             padding: const EdgeInsets.all(15),
-            child: FractionallySizedBox(
-              widthFactor: 1,
-              heightFactor: 1,
-              child: Column(children: [
+            child: Column(children: [
                 const CardBox(),
                 SizedBox(
                   height: 100,
@@ -83,15 +84,14 @@ class HomePage extends StatelessWidget {
                 const HomeCommonCard(
                   title: '门诊服务',
                   isShowRightArrow: false,
-                  child: Text('主要内容'),
+                  child: OutpatientService(),
                 ),
-                const HomeCommonCard(
-                  title: '住院服务',
-                  isShowRightArrow: false,
-                  child: Text('主要内容'),
-                ),
-              ]),
-            )));
+                // const HomeCommonCard(
+                //   title: '住院服务',
+                //   isShowRightArrow: false,
+                //   child: Text('主要内容'),
+                // ),
+              ])));
   }
 }
 

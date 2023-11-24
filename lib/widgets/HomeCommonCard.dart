@@ -1,7 +1,7 @@
 /*
  * @Author: liubin
  * @Date: 2023-11-20 18:00:27
- * @LastEditTime: 2023-11-23 18:10:22
+ * @LastEditTime: 2023-11-24 15:57:50
  * @LastEditors: liubin
  * @Description: 
  * @FilePath: \flutterDemo\hyt_app\lib\widgets\HomeCommonCard.dart
@@ -23,12 +23,8 @@ class HomeCommonCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 140,
-      child: FractionallySizedBox(
-        widthFactor: 1,
-        heightFactor: 1,
-        child: Container(
+    return IntrinsicHeight(
+      child:  Container(
           margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
           padding: const EdgeInsets.fromLTRB(15, 12, 15, 12),
           decoration: BoxDecoration(
@@ -40,6 +36,7 @@ class HomeCommonCard extends StatelessWidget {
             children: [
               Container(
                 padding: const EdgeInsets.only(bottom: 8),
+                margin: const EdgeInsets.only(bottom: 11),
                 decoration: BoxDecoration(
                   border: Border(
                     bottom: BorderSide(width: 1, color: HexColor('#EEEEEE')),
@@ -81,7 +78,6 @@ class HomeCommonCard extends StatelessWidget {
             ],
           ),
         ),
-      ),
     );
   }
 }

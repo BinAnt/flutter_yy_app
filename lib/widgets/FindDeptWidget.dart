@@ -3,13 +3,14 @@
 /*
  * @Author: liubin
  * @Date: 2023-11-21 17:20:50
- * @LastEditTime: 2023-11-24 09:49:49
+ * @LastEditTime: 2023-11-24 16:29:13
  * @LastEditors: liubin
  * @Description: 
  * @FilePath: \flutterDemo\hyt_app\lib\widgets\FindDeptWidget.dart
  */
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hyt_app/common/index.dart';
 
 class CustomSwiperPaginationBuilder extends SwiperPlugin {
@@ -113,52 +114,56 @@ List<Map<String, dynamic>> list = [
 class _nameState extends State<FindDeptWidget> {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 1,
-      child: Container(
-        padding: const EdgeInsets.only(top: 6),
-        child: Swiper(
-          itemBuilder: (BuildContext context, int index) {
-            return Wrap(
-              alignment: WrapAlignment.spaceBetween,
-              children:
-                  list.where((item) => item['sort'] ~/ 4 == index).map((item) {
-                var i = item['sort'];
-                return SizedBox(
-                  width: MediaQuery.of(context).size.width / 5,
-                  child: InkWell(
-                    onTap: () {
-                      print('点击${item['title']}');
-                      showToast(context, '点击${item['title']}');
-                      // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      //   content: Text('点击${item['title']}'),
-                      // ));
-                    },
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        SizedBox(
-                          height: MediaQuery.of(context).size.width * 0.12,
-                          width: MediaQuery.of(context).size.width * 0.12,
-                          child: Image.asset('images/icon_${(i + 1)}.png',
-                              width: 30, height: 30),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 2.0),
-                          child: Text(item['title']),
-                        )
-                      ],
-                    ),
+    return SizedBox(
+      height: 80,
+      child: Swiper(
+        itemBuilder: (BuildContext context, int index) {
+          return Wrap(
+            alignment: WrapAlignment.spaceBetween,
+            children:
+                list.where((item) => item['sort'] ~/ 4 == index).map((item) {
+              var i = item['sort'];
+              return SizedBox(
+                width: MediaQuery.of(context).size.width / 5,
+                child: InkWell(
+                  onTap: () {
+                    print('点击${item['title']}');
+                    // 方法一
+                    showToast(context, '点击${item['title']}');
+      
+                    // 方法二
+                    // Fluttertoast.showToast(
+                    //     msg: '点击${item['title']}',
+                    //     gravity: ToastGravity.CENTER
+                    //     );
+                    // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    //   content: Text('点击${item['title']}'),
+                    // ));
+                  },
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      SizedBox(
+                        height: MediaQuery.of(context).size.width * 0.12,
+                        width: MediaQuery.of(context).size.width * 0.12,
+                        child: Image.asset('images/icon_${(i + 1)}.png',
+                            width: 20, height: 20),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 2.0),
+                        child: Text(item['title'], style: const TextStyle(fontSize: 12),),
+                      )
+                    ],
                   ),
-                );
-              }).toList(),
-            );
-          },
-          itemCount: 2,
-          pagination: SwiperPagination(
-              alignment: Alignment.bottomCenter,
-              builder: CustomSwiperPaginationBuilder()),
-        ),
+                ),
+              );
+            }).toList()
+          );
+        },
+        itemCount: 2,
+        pagination: SwiperPagination(
+            alignment: Alignment.bottomCenter,
+            builder: CustomSwiperPaginationBuilder()),
       ),
     );
   }

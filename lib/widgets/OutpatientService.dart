@@ -11,13 +11,11 @@ List<Map<String, dynamic>> list = [
   {'title': '多学科会诊', 'icon': 'images/icon_11.png', 'sort': 10},
   {'title': '药品咨询', 'icon': 'images/icon_12.png', 'sort': 11},
   {'title': '护理咨询', 'icon': 'images/icon_13.png', 'sort': 12},
-  {'title': '骨科', 'icon': 'images/icon_14.png', 'sort': 13},
-  {'title': '骨科', 'icon': 'images/icon_15.png', 'sort': 14},
-  {'title': '骨科', 'icon': 'images/icon_16.png', 'sort': 15},
-  {'title': '骨科', 'icon': 'images/icon_17.png', 'sort': 16},
-  {'title': '骨科', 'icon': 'images/icon_18.png', 'sort': 17},
-  {'title': '骨科', 'icon': 'images/icon_19.png', 'sort': 18},
-  {'title': '骨科', 'icon': 'images/icon_20.png', 'sort': 19},
+  {'title': '取号缴费', 'icon': 'images/icon_14.png', 'sort': 13},
+  {'title': '随访门诊', 'icon': 'images/icon_15.png', 'sort': 14},
+  {'title': '取药查询', 'icon': 'images/icon_16.png', 'sort': 15},
+  {'title': '候诊查询', 'icon': 'images/icon_17.png', 'sort': 16},
+  {'title': '门诊药学服务', 'icon': 'images/icon_18.png', 'sort': 17},
 ];
 
 /// 门诊服务组件
@@ -28,7 +26,7 @@ class OutpatientService extends StatelessWidget {
   Widget build(BuildContext context) {
     return IntrinsicHeight(
       child: Wrap(
-          alignment: WrapAlignment.spaceBetween,
+          alignment: WrapAlignment.start,
           runSpacing: 11,
           children: list.map((item) {
             var i = item['sort'];
@@ -48,9 +46,17 @@ class OutpatientService extends StatelessWidget {
                       child: Image.asset('images/icon_${(i + 1)}.png',
                           width: 20, height: 20),
                     ),
-                    Padding(
+                    Container(
+                      width: 60,
                       padding: const EdgeInsets.only(top: 1.0),
-                      child: Text(item['title'], style: const TextStyle(fontSize: 12),),
+                      child: Text(
+                        item['title'], 
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 12,
+                        ),),
                     )
                   ],
                 ),

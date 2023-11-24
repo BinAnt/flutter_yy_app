@@ -1,7 +1,7 @@
 /*
  * @Author: liubin
  * @Date: 2023-11-10 11:27:23
- * @LastEditTime: 2023-11-24 16:17:14
+ * @LastEditTime: 2023-11-24 17:05:23
  * @LastEditors: liubin
  * @Description: 
  * @FilePath: \flutterDemo\hyt_app\lib\main.dart
@@ -38,10 +38,7 @@ class MyApp extends StatelessWidget {
           titleTextStyle: const TextStyle(color: Colors.white, fontSize: 20),
           backgroundColor: const Color.fromRGBO(58, 211, 193, 1), // 顶部导航背景颜色
         ),
-        body: const SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: HomePage(),
-        ),
+        body: const HomePage(),
         // scaffold包括AppBar和Body的背景颜色
         backgroundColor: const Color.fromRGBO(245, 246, 247, 1),
       ),
@@ -55,43 +52,40 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Container(
-            padding: const EdgeInsets.all(15),
-            child: Column(children: [
-                const CardBox(),
-                SizedBox(
-                  height: 100,
-                  child: FractionallySizedBox(
-                    widthFactor: 1,
-                    heightFactor: 1,
-                    child: Container(
-                      width: 100,
-                      height: 100,
-                      margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: const Text('banner导航'),
-                    ),
-                  ),
-                ),
-                const HomeCommonCard(
-                    title: '找科室',
-                    isShowRightArrow: true,
-                    child: FindDeptWidget()),
-                const HomeCommonCard(
-                  title: '门诊服务',
-                  isShowRightArrow: false,
-                  child: OutpatientService(),
-                ),
-                // const HomeCommonCard(
-                //   title: '住院服务',
-                //   isShowRightArrow: false,
-                //   child: Text('主要内容'),
-                // ),
-              ])));
+    return ListView(
+      padding: const EdgeInsets.all(11),
+      children: [
+      const CardBox(),
+      SizedBox(
+        height: 100,
+        child: FractionallySizedBox(
+          widthFactor: 1,
+          heightFactor: 1,
+          child: Container(
+            width: 100,
+            height: 100,
+            margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: const Text('banner导航'),
+          ),
+        ),
+      ),
+      const HomeCommonCard(
+          title: '找科室', isShowRightArrow: true, child: FindDeptWidget()),
+      const HomeCommonCard(
+        title: '门诊服务',
+        isShowRightArrow: false,
+        child: OutpatientService(),
+      ),
+      // const HomeCommonCard(
+      //   title: '住院服务',
+      //   isShowRightArrow: false,
+      //   child: Text('主要内容'),
+      // ),
+    ]);
   }
 }
 
